@@ -19,9 +19,9 @@ jobs:
             fi
 
       - run: |
-      docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
-      docker push registry.heroku.com/$HEROKU_APP_NAME/web
-      heroku container:release web -a $HEROKU_APP_NAME
+          docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
+          docker push registry.heroku.com/$HEROKU_APP_NAME/web
+          heroku container:release web -a $HEROKU_APP_NAME
 #          echo "$HEROKU_LOGIN" | heroku auth:login
 #          heroku container:login
 
