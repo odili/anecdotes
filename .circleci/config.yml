@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          cd anecdotes
+          pwd
           docker build -t registry.heroku.com/$HEROKU_APP_NAME/web .
           echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
       - run:
