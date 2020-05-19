@@ -1,10 +1,26 @@
 version: 2.1
 orbs:
-  deploy-to-heroku: betterdoc/deploy-to-heroku@4.1.0
+  heroku: circleci/heroku@1.0.1
 
 workflows:
   heroku_deploy:
     jobs:
-      - deploy-to-heroku/docker-build-release:
-          app-name: anecdotes-app
-          app-type: web
+      deploy_to_heroku:
+        machine:
+          image: ubuntu-1604:202004-01
+        steps:
+          - checkout
+          - run: |
+              cd anecdotes
+              docker build -t registry.heroku.com/$HEROKU_APP_NAME/web .
+              echo "$DOCKER_PASS" | docker login --username $DOCKER_USER --password-stdin
+          - run:
+            name: "Install Heroku CLI, if necessary"
+            command: |
+              if [[ $(command -v heroku) == "" ]]; then
+                curl https://cli-assets.heroku.com/install.sh | sh
+              else
+                echo "Heroku is already installed. No operation was performed."
+              fi
+
+#          - run: echo "$HEROKU_LOGIN" | heroku login
