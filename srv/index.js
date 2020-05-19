@@ -8,6 +8,6 @@ app.use(cors())
 app.use(express.static('anecdotes/build'))
 app.use('/api', jsonServer.router('db.json'))
 
-app.listen(3000, () => {
-  console.log(`🚀 Server running on 3000`);
+app.listen(80, () => {
+  console.log(`🚀 Server running on 80`);
 });

@@ -7,6 +7,6 @@ RUN yarn \
   && yarn build \
   && rm -rf node_modules 
 WORKDIR /opt/app
-EXPOSE 3000
+EXPOSE 80
 ENTRYPOINT ["node"]
 CMD ["index.js"]
