@@ -7,3 +7,4 @@ workflows:
     jobs:
       - deploy-to-heroku/docker-build-release:
           app-name: anecdotes-app
+          app-type: web
