@@ -6,4 +6,4 @@ workflows:
   heroku_deploy:
     jobs:
       - deploy-to-heroku/docker-build-release:
-          - app-name: "anecdotes-app"
+          app-name: anecdotes-app
